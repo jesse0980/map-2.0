@@ -1,12 +1,12 @@
-import Login from './login.js';
-import {initializeApp } from "firebase/app";
+import Login from './pages/login.js';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import {signInWithPopup, signOut } from "firebase/auth";
 import {useEffect, useState } from "react";
+import SignOut from "./pages/signOut.js";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-// Your web app's Firebase configuration
+// Initialize Firebase
 firebase.initializeApp({
   apiKey: "AIzaSyBmVJ1xkOnSoytlpX6jwLrqoT2iI7EWyYg",
   authDomain: "map-2-91351.firebaseapp.com",
@@ -17,33 +17,15 @@ firebase.initializeApp({
   measurementId: "G-V5G5BNS0CZ"
 });
 
-// Initialize Firebase
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-//function to sign in 
-function signIn (){
-  console.log("tried")
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider);
-}
-
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // Add an observer to check the user's authentication state
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user); // Update the user state based on authentication status
-    });
-    // Cleanup the observer when the component unmounts
-    return () => unsubscribe();
-  }, []);
-
-
+  const [user] = useAuthState(auth);
+  
   return (
     <div className="App">
-      {user && <Login func={signIn}/>}
+      {user ? <SignOut authProp={auth}/> : <Login fireProp={firebase} authProp={auth} fireStoreProp={firestore}/>}
     </div>
   );
 }
