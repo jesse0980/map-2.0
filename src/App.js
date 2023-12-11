@@ -1,9 +1,10 @@
-import Login from './pages/login.js';
+import Login from './components/login.js';
+import People from './components/people.js'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import {useEffect, useState } from "react";
-import SignOut from "./pages/signOut.js";
+import SignOut from "./components/signOut.js";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 // Initialize Firebase
@@ -25,7 +26,9 @@ function App() {
   
   return (
     <div className="App">
-      {user ? <SignOut authProp={auth}/> : <Login fireProp={firebase} authProp={auth} fireStoreProp={firestore}/>}
+      {user ? (<div> <People fireStore = {firestore}/> <SignOut authProp={auth}/> </div>): 
+      <Login fireProp={firebase} authProp={auth} fireStoreProp={firestore}/>
+      }
     </div>
   );
 }

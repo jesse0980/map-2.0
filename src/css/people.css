@@ -1,0 +1,11 @@
+.people-div{
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Align items horizontally */
+    height: 100vh; /* Set the height of the container, adjust as needed */
+    background-color: black;
+}
+.data{
+    height:50vh;
+    background-color: white;
+}
