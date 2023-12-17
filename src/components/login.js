@@ -1,8 +1,11 @@
 import "../css/login.css"
+import {useEffect} from "react";
 
 
 
 function Login(props){
+
+
     const signIn = async () => {
         //Get current data to check for returning user
         const FS = props.fireStoreProp;
@@ -24,7 +27,6 @@ function Login(props){
                     let newUser = true;
                     for(let row in data){
                         if(auth.currentUser._delegate.uid == data[row]['user_id']){
-                            console.log("yesss");
                             newUser = false;
                         }
                     }

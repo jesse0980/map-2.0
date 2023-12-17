@@ -4,8 +4,15 @@
     justify-content: center; /* Align items horizontally */
     height: 100vh; /* Set the height of the container, adjust as needed */
     background-color: black;
-}
+    flex-direction: column;
+    gap:2vh;
+    }
 .data{
     height:50vh;
     background-color: white;
+}
+.Location-style{
+    background-color:white;
+    display: flex; /* Add this line to align the content of child divs */
+
 }

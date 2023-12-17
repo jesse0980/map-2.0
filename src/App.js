@@ -22,11 +22,33 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 function App() {
+
+  //Ask for the users location
+  const [location, setLocation] = useState("Allow your location through your browser");
+  useEffect(() => {
+    if (navigator.geolocation){
+        navigator.permissions.query(
+            {name: "geolocation"}
+        )
+        .then(function(result){
+            console.log(result);
+            if (result.state == "granted" || result.state == "prompt"){
+                navigator.geolocation.getCurrentPosition(
+                    function succ(pos){
+                        let stringLocation = pos.coords.latitude + " " + pos.coords.longitude;
+                        setLocation(stringLocation);
+                    }
+                )
+            }
+        });
+    }
+})
+
   const [user] = useAuthState(auth);
   
   return (
     <div className="App">
-      {user ? (<div> <People fireStore = {firestore}/> <SignOut authProp={auth}/> </div>): 
+      {user ? (<div> <People loco = {location} fireStore = {firestore}/> <SignOut authProp={auth}/> </div>): 
       <Login fireProp={firebase} authProp={auth} fireStoreProp={firestore}/>
       }
     </div>
