@@ -15,6 +15,7 @@ export default function People(props){
       
               // Extract data from each document
               const data = snapshot.docs.map(doc => doc.data());
+              console.log(data)
       
               setData(data);
             } catch (error) {
