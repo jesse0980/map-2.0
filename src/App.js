@@ -1,6 +1,7 @@
 import Login from './components/login.js';
 import People from './components/people.js'
 import firebase from 'firebase/compat/app';
+import './css/App.css'
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import {useEffect, useState } from "react";
@@ -51,6 +52,7 @@ function App() {
       {user ? (<div> <People loco = {location} fireStore = {firestore}/> <SignOut authProp={auth}/> </div>): 
       <Login fireProp={firebase} authProp={auth} fireStoreProp={firestore}/>
       }
+      <h1 className="footer-text">© Jesse Landis</h1>
     </div>
   );
 }

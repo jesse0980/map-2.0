@@ -1,2 +1,9 @@
-
+.footer-text{
+    position: fixed;
+    top:95%;
+    font-size: 1vw;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    left:46%;
+  }
   
