@@ -21,13 +21,16 @@ export default function People(props){
       
               setData(data);
 
+              let newArray = [];
+
               for(let i = 0; i < data.length; i++){
                 let img = data[i].Picture;
                 let usersName = data[i].Name;
-                const newArray = [...user_array, <User image = {img} name = {usersName}/>];
+                let loco = data[i].location;
+                newArray = [...newArray, <User image = {img} name = {usersName} location = {loco}/>];
                 setArray(newArray);
+                console.log(newArray);
               }
-              console.log(user_array);
             } catch (error) {
               console.error('Error getting data from Firestore: ', error);
             }
@@ -39,13 +42,7 @@ export default function People(props){
 
     return(
         <div className="people-div">
-            <div className="data">
-                {
-                    data.map((item, index) => (
-                        <li key={index}>{JSON.stringify(item)}</li>
-                    ))
-                }
-            </div>
+            {user_array}
             <div className="Location-style"><h1>Your Location: {props.loco}</h1></div>
         </div>
     )

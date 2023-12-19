@@ -1,0 +1,20 @@
+.user_card{
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Align items horizontally */
+    height: 25vh; /* Set the height of the container, adjust as needed */
+    width:13vw;
+    background-color: black;
+    flex-direction: column;
+    gap:1vh;
+}
+.user-name{
+    color:white;
+}
+.user-loco{
+    color:white;
+}
+.user-image{
+    width: 9vw;
+    height: 19vh;
+}
